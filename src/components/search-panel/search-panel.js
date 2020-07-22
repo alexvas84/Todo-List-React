@@ -1,13 +1,24 @@
-import React from "react";
+import React, {Component} from "react";
 import '../todo-list/todo-list.css'
 
-const SearchPanel = () => {
-    const searchText = 'Type here to search';
-    const searchStyle = {
-        fontSize: '20px'
+export default class SearchPanel extends Component {
+
+    state = {
+        term: ''
     };
 
-    return <input className="search-input" style={searchStyle} placeholder={searchText}/>;
-};
+    onSearchChange = (e) => {
+        const term = e.target.value;
+        this.setState({term});
+        this.props.onSearchChange(term);
+    };
 
-export default SearchPanel;
+    render() {
+        return (
+            <input className="search-input"
+                   placeholder="Type here to search"
+                   value={this.state.term}
+                   onChange={this.onSearchChange}/>
+        );
+    }
+}
