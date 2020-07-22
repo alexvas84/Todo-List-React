@@ -4,4 +4,9 @@
 }
 .top-panel{
     margin: 1rem 0;
+    display: flex;
+}
+.top-panel input{
+    flex: 1;
+    margin-right: 3px;
 }
